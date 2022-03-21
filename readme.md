@@ -12,9 +12,9 @@ Invoke `clojure -X:common` or `clojure -T:common`, adding any other aliases you 
 
 ## Learnings
 
-- `:deps`/`:paths` work just like `:replace-deps`/`:replace-paths` in all contexts, just as Alex Miller said in the thread on Clojurians
-- `:replace-*` only gets rid of stuff defined at the top, not in other aliases that are used. Even when combining aliases of which some use `:replace-*` (or `:deps`/`:paths`), all deps/paths from those aliases will be available.
-- As `-T:alias` implies `:replace-deps {} :replace-paths ["."]` and multiple `:replace-paths` keys don't override each other, `"."` will _always_ be on the classpath, there is no way around it.
+1. `:deps`/`:paths` work just like `:replace-deps`/`:replace-paths` in all contexts, just as Alex Miller said in the thread on Clojurians
+2. `:replace-*` only gets rid of stuff defined at the top, not in other aliases that are used. Even when combining aliases of which some use `:replace-*` (or `:deps`/`:paths`, see 1.), all deps/paths from those aliases will be available.
+3. As `-T:alias` implies `:replace-deps {} :replace-paths ["."]` and multiple `:replace-paths` keys don't override each other (see 2.), `"."` will _always_ be on the classpath, there is no way around it.
 
 ## Examples
 

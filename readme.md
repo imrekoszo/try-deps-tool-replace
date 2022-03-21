@@ -16,6 +16,11 @@ Invoke `clojure -X:common` or `clojure -T:common`, adding any other aliases you 
 2. `:replace-*` only gets rid of stuff defined at the top, not in other aliases that are used. Even when combining aliases of which some use `:replace-*` (or `:deps`/`:paths`, see 1.), all deps/paths from those aliases will be available.
 3. As `-T:alias` implies `:replace-deps {} :replace-paths ["."]` and multiple `:replace-paths` keys don't override each other (see 2.), `"."` will _always_ be on the classpath when using `-T:alias`, there is no way around it.
 
+## Conclusions
+
+1. If the intended use of an alias is both as a `-T` tool _and_ something to use, say, in a repl for the project, my suggestion would be to prefer `:extra-deps`/`paths` in its alias. `-T` will ensure isolation when run as a tool, and it won't bin your top-level deps when you use it in the project repl (in case that's desired)
+2. If for some reason you _really_ don't want `"."` to be on the classpath, don't use `-T`. Work around it by combining `-X` with an alias that does the `replace` trick in case you don't want the top-level deps to be on the classpath for some reason.
+
 ## Examples
 
 ```shell

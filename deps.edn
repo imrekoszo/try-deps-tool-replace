@@ -1,0 +1,22 @@
+{;; all paths and deps outside the :common alias are used only as markers
+ :paths ["default"]
+ :deps  {org.clojure/data.json {:mvn/version "2.4.0"}}
+
+ :aliases
+ {:common
+  {:exec-fn     user/debug
+   :extra-paths ["src"]
+   :extra-deps  {org.clojure/clojure        {:mvn/version "1.11.0-rc1"}
+                 org.clojure/java.classpath {:mvn/version "1.0.0"}}}
+
+  :replace
+  {:replace-paths ["replace"]
+   :replace-deps  {org.clojure/data.csv {:mvn/version "1.0.0"}}}
+
+  :extra
+  {:extra-paths ["extra"]
+   :extra-deps  {org.clojure/data.xml {:mvn/version "0.0.8"}}}
+
+  :nothing
+  {:paths ["nothing"]
+   :deps  {org.clojure/data.priority-map {:mvn/version "1.1.0"}}}}}
